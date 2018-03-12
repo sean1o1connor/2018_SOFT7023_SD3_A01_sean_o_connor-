@@ -62,18 +62,18 @@ boolean is_pal(int a[6]) {
 
 	boolean b = False;
 int count  = 0;
-	int i = 0;
+	int elm_at_index_lb = 0;
 	int last_index = 5;
 	int check = 0;
-    int elm_at_index = elm_at_index = last_index - i;
+    int elm_at_index_ub  = last_index - elm_at_index_lb;
 
-void check_fucntion( ) {
+void check_fucntion() {
 
 do {
-		if (a[i]== a[elm_at_index]) {
-           i++;
+		if (a[elm_at_index_lb]== a[elm_at_index_ub]) {
+          elm_at_index_lb++;
           check++;
-          elm_at_index--;
+          elm_at_index_ub--;
 
           b = False;
           if (check  == 3){
@@ -84,7 +84,7 @@ do {
          b = False;
          if (check > 0)
          check= 0;
-         i = 0;
+         elm_at_index_lb = 0;
 		}
 
 count++;
@@ -266,7 +266,7 @@ void user_game_palindrome(int pal_num) {
 		process_movement(a, &ptr_index, &moves,ask_for_command());
 
 		print_status(a, ptr_index, moves);
-          is_pal(a);
+
 
 	}while (is_pal(a) == False );
 
