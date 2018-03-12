@@ -60,22 +60,50 @@ void initialise_array(int a[6], int num) {
 //--------------------------------------------------
 boolean is_pal(int a[6]) {
 
-	boolean b = True;
-
+	boolean b = False;
+int count  = 0;
 	int i = 0;
 	int last_index = 5;
-    int elm_at_index = last_index - i;
+	int check = 0;
+    int elm_at_index = elm_at_index = last_index - i;
 
-	while ((b == True) && (i < (last_index /2)))
-	{
-		if (a[i] != a[elm_at_index])
-			b = False;
-		else
-			i++;
-	}
+void check_fucntion( ) {
+
+do {
+		if (a[i]== a[elm_at_index]) {
+           i++;
+          check++;
+          elm_at_index--;
+
+          b = False;
+          if (check  == 3){
+            b = True;
+          }
+		}else{
+
+         b = False;
+         if (check > 0)
+         check= 0;
+         i = 0;
+		}
+
+count++;
+
+}while (count < 3);
+
+}
+check_fucntion();
+
+
+
+
+
+
 
 	return b;
+
 }
+
 
 //--------------------------------------------------
 // ask_for_command
@@ -83,7 +111,7 @@ boolean is_pal(int a[6]) {
 char ask_for_command() {
 	char res = ' ';
 
-	boolean is_valid = False;
+
 
 
 printf("NEW MOVEMENT: Enter a valid command by keyword: ");
@@ -197,23 +225,20 @@ void print_status(int a[6], int* p, int nm) {
 	printf(" NUMBERS = [ ");
 
 	for (i = 0; i < 6; i++) {
-		printf("%d  ", a[i]);//3 charcters
+		printf("%d  ", a[i]);//3 characters
 	}
 	printf("]\n");
 
-	printf("             ");// position the arrow right under the correct index
 
-
-
-
+    printf("             ");
 	for (i = 0; i < ( 3* index); i++)//create 3 character spaces same as above{jump}
 
-    printf("^");
+    printf(" ");// position the arrow right under the correct index
 	printf("^");
 	printf("\n");
 
 	printf(" MOVES = %d\n", nm);
-	printf("vl = %d" , index);
+	//printf("vl = %d" , index);
 
 	printf("===============================\n");
 	}
@@ -241,14 +266,14 @@ void user_game_palindrome(int pal_num) {
 		process_movement(a, &ptr_index, &moves,ask_for_command());
 
 		print_status(a, ptr_index, moves);
+          is_pal(a);
+
+	}while (is_pal(a) == False );
 
 
-	}while (!is_pal(a) );
-
-
-	printf("\n========================\n");
-	printf("====== SOLVED! =========\n");
-	printf("========================\n");
+	printf("\n===============================\n");
+	printf("=========== SOLVED! ===========\n");
+	printf("===============================\n");
 
 }
 
